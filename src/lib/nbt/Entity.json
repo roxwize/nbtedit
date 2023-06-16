@@ -1,0 +1,132 @@
+{
+  "name": "Entity",
+  "reference": "Entity_format#Entity_Format",
+  "tags": {
+    "Air": {
+      "name": "Air",
+      "type": "short",
+      "description": "How much air the entity has, in ticks. Decreases by 1 per tick when unable to breathe (except suffocating in a block). Increase by 1 per tick when it can breathe. If -20 while still unable to breathe, the entity loses 1 health and its air is reset to 0. Most mobs can have a maximum of 300 in air, while dolphins can reach up to 4800, and axolotls have 6000."
+    },
+    "CustomName": {
+      "name": "CustomName",
+      "type": "string",
+      "description": "The custom name JSON text component of this entity. Appears in player death messages and villager trading interfaces, as well as above the entity when the player's cursor is over it. Cannot be removed using the <code>data remove</code> command, but setting it to an empty string has the same effect."
+    },
+    "CustomNameVisible": {
+      "name": "CustomNameVisible",
+      "type": "boolean",
+      "description": "If true, and this entity has a custom name, the name always appears above the entity, regardless of where the cursor points. If the entity does not have a custom name, a default name is shown."
+    },
+    "FallDistance": {
+      "name": "FallDistance",
+      "type": "float",
+      "description": "Distance the entity has fallen. Larger values cause more damage when the entity lands."
+    },
+    "Fire": {
+      "name": "Fire",
+      "type": "short",
+      "description": "Number of ticks until the fire is put out. Negative values reflect how long the entity can stand in fire before burning. Default -20 when not on fire.",
+      "default": "-20"
+    },
+    "Glowing": {
+      "name": "Glowing",
+      "type": "boolean",
+      "description": "If true, the entity will have a glowing outline."
+    },
+    "HasVisualFire": {
+      "name": "HasVisualFire",
+      "type": "boolean",
+      "description": "If true, the entity visually appears on fire, even if it is not actually on fire."
+    },
+    "id": {
+      "name": "id",
+      "type": "string",
+      "required": true,
+      "description": "String representation of the entity's ID. Does not exist for the Player entity.",
+      "example": "minecraft:skeleton"
+    },
+    "Invulnerable": {
+      "name": "Invulnerable",
+      "type": "boolean",
+      "description": "True if the entity should not take damage. This applies to living and nonliving entities alike: mobs should not take damage from any source (including potion effects), and cannot be moved by fishing rods, attacks, explosions, or projectiles, and objects such as vehicles and item frames cannot be destroyed unless their supports are removed. Invulnerable player entities are also ignored by any hostile mobs. Note that these entities can be damaged by players in Creative mode."
+    },
+    "Motion": {
+      "name": "Motion",
+      "type": "list",
+      "description": "3 TAG_Doubles describing the current dX, dY and dZ velocity of the entity in meters per tick.",
+      "tags": [
+        { "name": "x", "type": "double" },
+        { "name": "y", "type": "double" },
+        { "name": "z", "type": "double" }
+      ]
+    },
+    "NoGravity": {
+      "name": "NoGravity",
+      "type": "boolean",
+      "description": "If true, the entity does not fall down naturally."
+    },
+    "Passengers": {
+      "name": "Passengers",
+      "type": "list",
+      "description": "The data of the entity(s) that is riding this entity. Note that both entities control movement and the topmost entity controls spawning conditions when created by a mob spawner.",
+      "example": "[{id:\"minecraft:skeleton\"}]"
+    },
+    "PortalCooldown": {
+      "name": "PortalCooldown",
+      "type": "int",
+      "description": "The number of ticks before which the entity may be teleported back through a nether portal. Initially starts at 300 ticks (15 seconds) after teleportation and counts down to 0."
+    },
+    "Pos": {
+      "name": "Pos",
+      "type": "list",
+      "description": "3 TAG_Doubles describing the current X, Y and Z position of the entity.",
+      "tags": [
+        { "name": "x", "type": "double" },
+        { "name": "y", "type": "double" },
+        { "name": "z", "type": "double" }
+      ]
+    },
+    "Rotation": {
+      "name": "Rotation",
+      "type": "list",
+      "description": "Two TAG_Floats representing rotation in degrees.",
+      "tags": [
+        {
+          "name": "yaw",
+          "type": "float",
+          "description": "The entity's rotation around the Y axis (called yaw). Values vary from -180 (facing due north) to -90 (facing due east) to 0 (facing due south) to +90 (facing due west) to +180 (facing due north again)."
+        },
+        {
+          "name": "pitch",
+          "type": "float",
+          "description": "The entity's declination from the horizon (called pitch). Horizontal is 0. Positive values look downward. Does not exceed positive or negative 90 degrees."
+        }
+      ]
+    },
+    "Silent": {
+      "name": "Silent",
+      "type": "boolean"
+    },
+    "Tags": {
+      "name": "Tags",
+      "type": "list",
+      "description": "List of scoreboard tags of this entity."
+    },
+    "TicksFrozen": {
+      "name": "TicksFrozen",
+      "type": "int",
+      "description": "How many ticks the entity has been freezing. Although this tag is defined for all entities, it is actually only used by mobs that are not in the freeze_immune_entity_types entity type tag. Ticks up by 1 every tick while in powder snow, up to a maximum of 300 (15 seconds), and ticks down by 2 while out of it."
+    },
+    "UUID": {
+      "name": "UUID",
+      "type": "list",
+      "description": "This entity's Universally Unique IDentifier. The 128-bit UUID is stored as four 32-bit integers, ordered from most to least significant.",
+      "tags": [
+        { "name": "0", "type": "int" },
+        { "name": "1", "type": "int" },
+        { "name": "2", "type": "int" },
+        { "name": "3", "type": "int" }
+      ]
+    }
+  }
+}
