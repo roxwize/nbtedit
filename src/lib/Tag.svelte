@@ -62,8 +62,8 @@
         else return "0";
     }
 
-    function validate() {
-        const e = document.getElementById("input-" + entry[1].name);
+    function validate(v) {
+        const e = v.target;
         if (entry[1].type !== "boolean") {
             if ((e.value.length < 1 || e.type === "text") && !entry[1].required) return;
             if (e.value.length < 1 && entry[1].required) {
@@ -83,7 +83,7 @@
 
 <Card class={classes} {color}>
     <CardBody>
-        <strong>{entry[1].name} [{entry[1].type}]</strong><br/>
+        <strong>{entry[1].name} <span class="text-secondary">{entry[1].type}</span></strong><br/>
         {#if entry[1].description}
             <span>{@html entry[1].description}</span><br/>
         {/if}

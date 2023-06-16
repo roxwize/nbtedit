@@ -1,6 +1,7 @@
 {
   "name": "Entity",
   "reference": "Entity_format#Entity_Format",
+  "description": "Entities are stored in the entities folder of respective dimension folders. It is stored like regional Minecraft Anvil files, which are named in the form r.x.z.mca.",
   "tags": {
     "Air": {
       "name": "Air",
@@ -110,7 +111,7 @@
     "Tags": {
       "name": "Tags",
       "type": "list",
-      "description": "List of scoreboard tags of this entity."
+      "description": "List of scoreboard tags for this entity."
     },
     "TicksFrozen": {
       "name": "TicksFrozen",

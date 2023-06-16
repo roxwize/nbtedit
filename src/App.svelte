@@ -1,8 +1,11 @@
 <script>
-    import {Button, Styles} from "sveltestrap";
+    import {Styles, TabContent, TabPane} from "sveltestrap";
     import Header from "./lib/Header.svelte";
 
-    import Entity from "./lib/nbt/Entity.svelte";
+    import NBTBasic from "./lib/nbt/NBTBasic.svelte";
+
+    import * as Entity from "./lib/nbt/Entity.json";
+    import * as WrittenBook from "./lib/nbt/WrittenBook.json";
 
     let table = {};
     $: generated = generate(table);
@@ -28,10 +31,9 @@
     }
 
     function generate(t) {
-        if (Object.keys(t).length <= 0) return " ";
+        if (Object.keys(t).length <= 0) return "{}";
         let str = "{";
         for (const [key, value] of Object.entries(t)) {
-            console.log(value);
             let v;
             if (typeof(value.val) === "object") {
                 v = "[";
@@ -65,18 +67,24 @@
         if (entry.type === "boolean" && !entry.default) d = 0;
         else if (!entry.default) d = "";
         else d = entry.default;
+        // have arrays filled with default values remove the array
         if (value == d && table[entry.name]) { delete table[entry.name] }
     }
 </script>
-
-<!-- Find some way to enable recursion, ideally json file would have "compound" type make "tags" value required -->
 
 <Styles/>
 
 <Header/>
 <main class="p-4">
     <h1>NBTEdit</h1>
-    <p>NBTEdit is an online utility that lets you generate NBT data structures for use in Minecraft.</p>
-    <Entity update={update}/>
+    <p>NBTEdit is an online utility that lets you generate NBT data structures for use in Minecraft.<br/><br/>Information sourced from <a href="https://minecraft.fandom.com/">the Minecraft Wiki</a>.</p>
+    <TabContent>
+        <TabPane tabId="entity" tab="Entity" active>
+            <NBTBasic {update} data={Entity} />
+        </TabPane>
+        <TabPane tabId="book" tab="Written Book">
+            <NBTBasic {update} data={WrittenBook} />
+        </TabPane>
+    </TabContent>
     <pre class="text-light bg-dark mt-4 p-3" id="output">{generated}</pre>
 </main>

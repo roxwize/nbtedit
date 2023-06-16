@@ -1,0 +1,32 @@
+{
+  "name": "Written Book",
+  "description": "A written book is an item created after a book and quill is signed.",
+  "reference": "Written_Book#Item_data",
+  "tags": {
+    "resolved": {
+      "name": "resolved",
+      "type": "boolean",
+      "description": "Created and set to 1 when the book (or a book from the stack) is opened for the first time after being created. Used to determine whether to resolve advanced components within JSON, because their values become fixed at that point."
+    },
+    "generation": {
+      "name": "generation",
+      "type": "int",
+      "description": "The copy tier of the book. 0 = original, 1 = copy of original, 2 = copy of copy, 3 = tattered. If the value is greater than 1, the book cannot be copied. Does not exist for original books. If this tag is missing, it is assumed the book is an original. 'Tattered' is unused in normal gameplay, and functions identically to the 'copy of copy' tier."
+    },
+    "author": {
+      "name": "author",
+      "type": "string",
+      "description": "The title of the written book. Lower priority than the item name set by <code>tag.display.Name</code>. Can not be used to open locked containers."
+    },
+    "title": {
+      "name": "title",
+      "type": "string"
+    },
+    "pages": {
+      "name": "pages",
+      "type": "list",
+      "description": "The list of pages in the book.",
+      "example": "[\"Test\",\"Hi mom\"]"
+    }
+  }
+}
